@@ -16,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/test" element={<div>Test Page</div>} />
         </Routes>
       </Router>
       </ThemeProvider>
