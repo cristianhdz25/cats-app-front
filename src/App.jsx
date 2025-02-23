@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter ,Route, Routes } from 'react-router-dom';
 import { TokenProvider } from './context/TokenContext'; // Importamos el TokenProvider
 import NavbarComponent from './components/Navbar';
 import { Login } from './pages/Login';
@@ -11,13 +11,14 @@ function App() {
 
     <TokenProvider>
       <ThemeProvider theme={theme}> {/* Aplica el tema aquí */}
-      <Router>
-        <NavbarComponent />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-        </Routes>
-      </Router>
+
+      <NavbarComponent />
+        <BrowserRouter basename="/">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
+        </BrowserRouter>
       </ThemeProvider>
     </TokenProvider>
   );
