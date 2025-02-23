@@ -4,5 +4,5 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  base: '/', // Cambia esto si tu aplicación está en un subdirectorio
+  base: './', // Cambia esto si tu aplicación está en un subdirectorio
 });
