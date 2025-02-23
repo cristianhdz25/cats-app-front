@@ -27,7 +27,7 @@ const cookies = new Cookies();
             CatBreeds App
           </Typography>
           {cookies.get('jwtToken') &&<Button color="inherit">Add breed</Button>}
-          {!cookies.get('jwtToken') && <Button color="inherit" href='/login'>Login</Button>}
+          {!cookies.get('jwtToken') && <Button color="inherit" href='./login'>Login</Button>}
           {cookies.get('jwtToken') && <Button color="inherit" onClick={handleLogout}>Logout</Button>}
 
         </Toolbar>
