@@ -6,6 +6,11 @@ import Button from '@mui/material/Button';
 import Cookies from 'universal-cookie';
 import TokenContext from '../../context/TokenContext'; // Importamos el contexto
 import { useContext } from 'react';
+import toast from 'react-hot-toast';
+import { Link } from 'react-router-dom';
+import LoginTwoToneIcon from '@mui/icons-material/LoginTwoTone';
+import LogoutIcon from '@mui/icons-material/Logout';
+
 
 const cookies = new Cookies();
 
@@ -17,19 +22,24 @@ const cookies = new Cookies();
         // Aquí puedes eliminar el token de las cookies si es necesario:
         const cookies = new Cookies();
         cookies.remove('jwtToken');
+        toast.success('Logout successful');
       };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed">
         <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            CatBreeds App
-          </Typography>
-          {cookies.get('jwtToken') &&<Button color="inherit">Add breed</Button>}
-          {!cookies.get('jwtToken') && <Button color="inherit" href='/login'>Login</Button>}
-          {cookies.get('jwtToken') && <Button color="inherit" onClick={handleLogout}>Logout</Button>}
 
+          <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
+            <Link to='/' style={{ textDecoration: 'none', color: 'black' }}>
+               CatBreeds App
+            </Link>
+          </Typography>
+    
+          {cookies.get('jwtToken') && <Link component='button' color='inherit' to='/addCatBreed' style={{ textDecoration: 'none', color: 'black' }}>ADD BREED</Link>}
+          {!cookies.get('jwtToken') && <Link component='button' color='inherit' to='/login' style={{ textDecoration: 'none', color: 'black' }}><LoginTwoToneIcon/></Link>}
+          {cookies.get('jwtToken') && <Button color="inherit" onClick={handleLogout}><LogoutIcon/></Button>}
+   
         </Toolbar>
       </AppBar>
     </Box>

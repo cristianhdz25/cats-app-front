@@ -2,11 +2,10 @@ import { useState } from 'react';
 import { Box, Button, Container, FormControl, Grid2, TextField } from '@mui/material';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import PasswordIcon from '@mui/icons-material/Password';
-import { login } from '../../services/authService'; // Asegúrate de que el método login sea correcto
+import { register } from '../../services/authService'; // Asegúrate de que el método login sea correcto
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
 
-export const Login = () => {
+export const Register = () => {
   // Estados para los campos de usuario y contraseña
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -21,21 +20,21 @@ export const Login = () => {
 
     // Validación básica (puedes personalizarla)
     if (!username || !password) {
-      alert('Por favor, ingrese ambos campos.');
+      toast.error('Please enter both fields.');
       return;
     }
 
     // Llamada al servicio de login (debes pasar los datos correctamente)
     try {
-      const response = await login(username, password);
-        if(response){
-            toast.success('Login successful');
+      const response = await register(username, password);
+        if (response.success) {
+            toast.success('Register successful');
             setInterval(() => {
-                window.location.href = '/'; // Redirigir a la página principal
+                window.location.href = '/login'; // Redirigir a la página principal
             }, 500);
         } else {
-            toast.error("Invalid credentials");
-        }
+            toast.error(response.message);
+        }  
     } catch (error) {
       console.error('Error al iniciar sesión:', error);
       // Manejar errores (puedes mostrar un mensaje de error al usuario)
@@ -63,7 +62,7 @@ export const Login = () => {
         border={'1px solid rgb(196, 194, 194)'}
         style={{ justifyContent: 'center', backgroundColor: '#a1bd7f' }}
       >
-        <h1 style={{ textAlign: 'center' }}>Log in</h1>
+        <h1 style={{ textAlign: 'center' }}>Sign in</h1>
 
         <Box sx={{ display: 'flex', alignItems: 'flex-end' }} >
           <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
@@ -90,15 +89,9 @@ export const Login = () => {
           />
         </Box>
 
-        <div style={{ textAlign: 'center', marginTop: '20px' }}>
-          <Link to="/register" style={{ textDecoration: 'none', color: '#1976d2' }}>
-            Don&apos;t have an account? Register here
-          </Link>
-        </div>
-
         <FormControl fullWidth style={{ marginTop: '20px' }}>
           <Button variant="contained" color="primary" onClick={handleSubmit} fullWidth>
-            Login
+            Register
           </Button>
         </FormControl>
       </Grid2>

@@ -1,5 +1,4 @@
 import axios from "axios";
-import toast from "solid-toast";
 import Cookies from "universal-cookie";
 
 const cookies = new Cookies();
@@ -13,7 +12,20 @@ export const login = async (username, password) => {
 
         cookies.set('jwtToken', token, { path: '/', maxAge: 3600 }); // max age in seconds (1 hour)
 
-        toast.success('Login successful');
+        return token;
+
+    } catch (error) {
+        console.error('Error:', error.response ? error.response.data : error.message);
+    }
+}
+
+export const register = async (username, password) => {
+    try {
+        const response = await axios.post(`${baseURL}/register`, { username, password });
+
+         console.log(response.data);    
+
+         return response.data;
     } catch (error) {
         console.error('Error:', error.response ? error.response.data : error.message);
     }

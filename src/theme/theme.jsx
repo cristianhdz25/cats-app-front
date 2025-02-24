@@ -15,6 +15,8 @@ const theme = createTheme({
   typography: {
     fontFamily: 'Poppins, Arial, sans-serif', // Fuente de Google Fonts
   },
+  
+
 });
 
 export default theme;
