@@ -2,7 +2,9 @@ import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import PropTypes from 'prop-types';
+import toast from 'react-hot-toast';
 
+// Styled component for the input element
 const VisuallyHiddenInput = styled('input')({
   clip: 'rect(0 0 0 0)',
   clipPath: 'inset(50%)',
@@ -15,10 +17,12 @@ const VisuallyHiddenInput = styled('input')({
   width: 1,
 });
 
+// Component for uploading files
 export default function InputFileUpload({handleFile}) {
 
     const handleFileChange = (event) => {
         handleFile(event.target.files);
+        toast.success('File uploaded successfully');
     };
     
   return (

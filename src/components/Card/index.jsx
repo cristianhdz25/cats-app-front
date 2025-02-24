@@ -16,6 +16,8 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
+
+// Component to display a card with cat breed information
 const CardComponent = ({ idCatBreed, name, description, imageURL, onDelete }) => {
   const { token } = useContext(TokenContext);
   const [open, setOpen] = useState(false);

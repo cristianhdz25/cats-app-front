@@ -4,6 +4,7 @@ import Cookies from "universal-cookie";
 const cookies = new Cookies();
 const baseURL = "https://catapi20250222210437-h5fgabezf9feb7bp.eastus-01.azurewebsites.net/api/Auth";
 
+// Function to log in the user
 export const login = async (username, password) => {
     try {
         const response = await axios.post(`${baseURL}/login`, { username, password });
@@ -19,6 +20,7 @@ export const login = async (username, password) => {
     }
 }
 
+// Function to register the user
 export const register = async (username, password) => {
     try {
         const response = await axios.post(`${baseURL}/register`, { username, password });

@@ -11,8 +11,6 @@ import { AddCatBreed } from './pages/AddCatBreed';
 import { DetailCatBreed } from './pages/DetailCatBreed';
 import { EditCatBreed } from './pages/EditCatBreed';
 
-
-
 function App() {
   return (
 

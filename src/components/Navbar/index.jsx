@@ -4,22 +4,20 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Cookies from 'universal-cookie';
-import TokenContext from '../../context/TokenContext'; // Importamos el contexto
+import TokenContext from '../../context/TokenContext'; // Import the context
 import { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
-import LoginTwoToneIcon from '@mui/icons-material/LoginTwoTone';
-import LogoutIcon from '@mui/icons-material/Logout';
 
 
 const cookies = new Cookies();
 
+// Component to display the Navbar
  const NavbarComponent =() => {
-    const { setToken } = useContext(TokenContext); // Obtenemos el token del contexto
+    const { setToken } = useContext(TokenContext); // Obtaining the setToken function from the context
 
     const handleLogout = () => {
-        setToken(null); // Eliminamos el token del estado global
-        // Aquí puedes eliminar el token de las cookies si es necesario:
+        setToken(null); // Delete the token from the context
         const cookies = new Cookies();
         cookies.remove('jwtToken');
         toast.success('Logout successful');
@@ -36,10 +34,10 @@ const cookies = new Cookies();
             </Link>
           </Typography>
     
-          {cookies.get('jwtToken') && <Link component='button' color='inherit' to='/addCatBreed' style={{ textDecoration: 'none', color: 'black' }}>ADD BREED</Link>}
-          {!cookies.get('jwtToken') && <Link component='button' color='inherit' to='/login' style={{ textDecoration: 'none', color: 'black' }}><LoginTwoToneIcon/></Link>}
-          {cookies.get('jwtToken') && <Button color="inherit" onClick={handleLogout}><LogoutIcon/></Button>}
-   
+
+          {cookies.get('jwtToken') && <Link to='/addCatBreed'><Button color="inherit" >Add Breed</Button></Link>}
+          {!cookies.get('jwtToken') && <Link to='/login'><Button color="inherit" >Login</Button></Link>}
+          {cookies.get('jwtToken') && <Button color="inherit" onClick={handleLogout}>Logout</Button>}
         </Toolbar>
       </AppBar>
     </Box>

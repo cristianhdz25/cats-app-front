@@ -1,8 +1,9 @@
 import axios from "axios";
 
+// Function to submit an image to Cloudinary
 export const submitImage = async (file) => {
-    const presetKey = "catsAppAPIImages";
-    const cloudName = "dergrc8nv";
+    const presetKey = "catsAppAPIImages"; // Use the preset key you created in Cloudinary
+    const cloudName = "dergrc8nv"; // Use your Cloudinary cloud name
 
     console.log("file", file);
     

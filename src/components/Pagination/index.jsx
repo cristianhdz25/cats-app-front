@@ -1,6 +1,7 @@
 import Pagination from '@mui/material/Pagination';
 import PropTypes from 'prop-types';
 
+//Component to display pagination
 export default function PaginationComponent({totalPages, onPageChange}) {
   const handleChange = (event, value) => {
     onPageChange(value); // Llama a la función de cambio de página pasada como prop

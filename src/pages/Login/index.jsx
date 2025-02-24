@@ -2,26 +2,25 @@ import { useState } from 'react';
 import { Box, Button, Container, FormControl, Grid2, TextField } from '@mui/material';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import PasswordIcon from '@mui/icons-material/Password';
-import { login } from '../../services/authService'; // Asegúrate de que el método login sea correcto
+import { login } from '../../services/authService'; 
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 
 export const Login = () => {
-  // Estados para los campos de usuario y contraseña
+  
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  // Manejo del evento de cambio de los campos
+  // Manage the changes in the input fields
   const handleUsernameChange = (e) => setUsername(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
 
-  // Manejo del envío del formulario
+  // Manage the form submission
   const handleSubmit = async (e) => {
     e.preventDefault(); // Evita el comportamiento predeterminado del formulario
 
-    // Validación básica (puedes personalizarla)
     if (!username || !password) {
-      alert('Por favor, ingrese ambos campos.');
+      toast.error('Please fill all fields');
       return;
     }
 
@@ -31,14 +30,13 @@ export const Login = () => {
         if(response){
             toast.success('Login successful');
             setInterval(() => {
-                window.location.href = '/'; // Redirigir a la página principal
+                window.location.href = '/'; // Redirect to the home page
             }, 500);
         } else {
             toast.error("Invalid credentials");
         }
     } catch (error) {
-      console.error('Error al iniciar sesión:', error);
-      // Manejar errores (puedes mostrar un mensaje de error al usuario)
+      console.error('Error:', error);
     }
   };
 

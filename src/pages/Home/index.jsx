@@ -14,6 +14,7 @@ export const Home = () => {
     const [totalPages, setTotalPages] = useState(0);
     const [deleteCatId, setDeleteCatId] = useState(0);
 
+    // useEffect to fetch the data when the component mounts or the page changes
     useEffect(() => {
         setLoading(true);
         getAllCats(page)
@@ -60,7 +61,7 @@ export const Home = () => {
                 <Box style={{ display: 'flex', justifyContent: 'center', marginTop: '20px', marginBottom: '20px' }}>
                     <PaginationComponent 
                         totalPages={totalPages} 
-                        onPageChange={handlePageChange} // Pasa la función de cambio de página
+                        onPageChange={handlePageChange} // Past the function to change the page
 
                     />
                 </Box>
